@@ -3,7 +3,7 @@
 
 
 session_start();
-session_destroy();
+unset($_SESSION['adminemail']);
 header("Location: http://localhost/hoteladda/Frontend/");
 
 

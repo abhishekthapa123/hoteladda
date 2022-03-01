@@ -1,7 +1,10 @@
 <?php
 
 session_start();
-
+if(!isset($_SESSION['adminemail']))
+{
+    header("Location: http://localhost/hoteladda/Frontend/");
+}
 ?>
 
 <!DOCTYPE html>
@@ -75,7 +78,7 @@ session_start();
                             <input type="text" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a> </form>
                     </li>
                     <li>
-                        <a class="profile-pic" href="#"> <img src="plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs"><?php echo $_SESSION['adminemail']; ?></b></a>
+                        <a class="profile-pic" href="#"> <img src="plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs"> <?php if(!isset($_SESSION['admin'])){echo $_SESSION['adminemail']; }?></b></a>
                     </li>
                 </ul>
             </div>
@@ -96,11 +99,28 @@ session_start();
                     <br><br><br><br><br><br>
                     
                     <li>
-                        <a href="myhotels.php" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i>My Hotels</a>
+                        <a href="myhotels.php" class="waves-effect"><i class="fa fa-home fa-fw" aria-hidden="true"></i>My Hotels</a>
+                    </li>
+                      
+                    <li>
+                        <a href="roomRequest.php" class="waves-effect"><i class="fa fa-paper-plane fa-fw" aria-hidden="true"></i>Room Request</a>
+                    </li>
+                    <li>
+                        <a href="pending_hotelRequest.php" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Pending Hotels</a>
+                    </li>
+                    <li>
+                        <a href="updateRooms.php" class="waves-effect"><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Update Room Details </a>
+                    </li>
+                    <li>
+                        <a href="listAnalysisHotel.php" class="waves-effect"><i class="fa fa-bar-chart fa-fw" aria-hidden="true"></i>  Room Analysis  </a>
+                    </li>
+                    <li>
+                        <a href="Hotelincome.php" class="waves-effect"><i class="fa fa-money fa-fw" aria-hidden="true"></i>Income Analysis </a>
                     </li>
                     <li>
                         <a href="adminlogout.php" class="waves-effect"><i class="fa fa-info fa-fw" aria-hidden="true"></i>Logout </a>
                     </li>
+                
  
                     </li>
 

@@ -125,8 +125,7 @@
                
 
                 // Date Picker
-                const pickerCheckIn = datepicker('#inputCheckIn');
-                const pickerCheckOut = datepicker('#inputCheckOut');
+    
                 
                 // Slick carousel
                 setCarousel();

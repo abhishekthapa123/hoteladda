@@ -16,14 +16,14 @@
                                 <ul class="navbar-nav ml-auto">
                                   <li class="nav-item">
                               
-                                    <a class="nav-link" href="propeerty">Home </a>
+                                    <a class="nav-link" href="index.php">Home </a>
                                   </li>
                                   <li class="nav-item">
                                     <a class="nav-link" href="propertyloginform.php">List your Property </a>
                                   </li>
                                   <li class="nav-item">
                                    <?php
-                                    session_start();
+                                 
                                     if(!isset($_SESSION["email"]))
                                     {
                                    ?>
@@ -44,7 +44,7 @@
                                     
                                   </li>
                                   <li class="nav-item">
-                                    <a class="nav-link" href="">Contact Us</a>
+                                    <a class="nav-link" href="adda_admin_login.php">Hotel Adda </a>
                                   </li>
                                   
                                     <?php 
@@ -55,8 +55,8 @@
                                       <?php echo $_SESSION['email']; ?>
                                      </a>   
                                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                      <a class="dropdown-item" href="loginform.php">My Bookings</a>
-       
+                                      <a class="dropdown-item" href="mybookings.php" style="color:green;">My Bookings</a>
+                                      <a class="dropdown-item" href="myratings.php" style="color:orange;">Hotel Ratings</a>
                                       </div>
                                       <?php } ?>
                                     </li>
