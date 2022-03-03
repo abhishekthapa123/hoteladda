@@ -100,7 +100,7 @@ include('header.php')
                     <div class="tm-bg-white">
                             <div class="tm-bg-primary tm-sidebar-pad">
                                 <h3 class="tm-color-white tm-sidebar-title">Searched Hotels</h3>
-                               
+                      
                             </div>
                         </div>     
                         <div class="tm-article-carousel" id="result">
@@ -116,6 +116,7 @@ include('header.php')
                                        // output data of each row
         
                             // output data of each row
+                            if(mysqli_num_rows($result) > 0){
                              while($row = mysqli_fetch_assoc($result)) 
                              {
                                
@@ -129,13 +130,17 @@ include('header.php')
                    
                                     </p>
                                    
-                                    <a href="bookroom.php?id=<?php echo $row['hotel_id']; ?>" class="text-uppercase btn btn-success">Book Now</a>
+                                    <a href="bookroom.php?id=<?php echo $row['hotel_id']; ?>&city=<?php echo $row['location'];  ?>&room=<?php echo $room; ?>" class="text-uppercase btn btn-success">Book Now</a>
                                     &nbsp&nbsp;<a href="map.php?id=<?php echo $row['hotel_id']; ?>" class="text-uppercase btn btn-warning">View on Map</a>
                                 </div>                                
                             </article>                    
                            
-                            <?php } ?>         
-                        
+                            <?php }} else{ ?>         
+                            
+                              <div style="margin-top:200px;">
+                            <h3>NO HOTELS FOUND... </h3>
+                            </div>
+                            <?php } ?>
                          
                         </div>    
                     </div>
@@ -143,8 +148,33 @@ include('header.php')
                     <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 tm-recommended-container">
                     <div class="tm-bg-white">
                                 <div class="tm-bg-primary tm-sidebar-pad">
-                                    <h3 class="tm-color-white tm-sidebar-title">Filters</h3>
-                                    
+                                    <h3 class="tm-color-white tm-sidebar-title">Top Places To Visit In Nepal</h3>
+                                    <div class="tm-sidebar-pad-2">
+                                    <a href="#" class="media tm-media tm-recommended-item">
+                                        <img src="img/tn-img-01.jpg" alt="Image">
+                                        <div class="media-body tm-media-body tm-bg-gray">
+                                            <h4 class="text-uppercase tm-font-semibold tm-sidebar-item-title">Chitwan</h4>
+                                        </div>                                        
+                                    </a>
+                                    <a href="#" class="media tm-media tm-recommended-item">
+                                        <img src="img/tn-img-02.jpg" alt="Image">
+                                        <div class="media-body tm-media-body tm-bg-gray">
+                                            <h4 class="text-uppercase tm-font-semibold tm-sidebar-item-title">Pokhara</h4>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="media tm-media tm-recommended-item">
+                                        <img src="img/tn-img-03.jpg" alt="Image">
+                                        <div class="media-body tm-media-body tm-bg-gray">
+                                            <h4 class="text-uppercase tm-font-semibold tm-sidebar-item-title">Ilaam</h4>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="media tm-media tm-recommended-item">
+                                        <img src="img/tn-img-04.jpg" alt="Image">
+                                        <div class="media-body tm-media-body tm-bg-gray">
+                                            <h4 class="text-uppercase tm-font-semibold tm-sidebar-item-title">Mustang</h4>
+                                        </div>
+                                    </a>
+                                </div>
                                 </div>
                               
                               

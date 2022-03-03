@@ -17,7 +17,9 @@ include('adminsidebar.php');
          
             <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                 
-              
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  
+        </div>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -36,7 +38,7 @@ include('adminsidebar.php');
         while($row = mysqli_fetch_assoc($result2)) {  
          
     ?>
-
+        <h3><?php  echo "Update"."&nbsp".$_GET['hname']."&nbsp Rooms";   ?></h3>
      <form method="POST" action="update_singlebed.php" enctype="multipart/form-data">
     <div class="form-group">
     <input type="hidden" value= <?php echo $_GET['hid'];?> name="hid">
@@ -54,7 +56,7 @@ include('adminsidebar.php');
     <br>
     <label for="exampleInputEmail1"> Facilites</label>
     
-     <input type="text" value="<?php echo $row['facilites']; ?>"name="single_bed_price" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" readonly>
+     <input type="text" value="<?php echo $row['facilites']; ?>"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" readonly>
     
 <div class="form-check">
 <input type="checkbox" value="AC" name="single_bed_facility[]"  class="form-check-input" id="exampleCheck1">

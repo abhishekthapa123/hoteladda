@@ -24,7 +24,7 @@ include('adda_adminsidebar.php');
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">My Hotels</h3>
+                            <h3 class="box-title"> Hotels Request</h3>
                         
                          
 
@@ -47,7 +47,9 @@ include('adda_adminsidebar.php');
                                     <tbody>
                                     <?php
                                         include('connect.php');
-                                        $sql = "SELECT * FROM hotel where flag='0'";
+                                        $sql = "SELECT * FROM hotel h
+                                        INNER JOIN  admin a on a.id = h.admin_id
+                                         where h.flag='0'";
                                         $result = mysqli_query($conn, $sql);
 
                                         while($row = mysqli_fetch_assoc($result)) {
@@ -57,11 +59,11 @@ include('adda_adminsidebar.php');
                                             <td> <?php  echo $row['hotelname'] ?></td>
                                             <td> <?php  echo $row['location'] ?></td>
                                             <td><img src=<?php echo $row['image'];  ?> height="200px"></td>
-                                            <td> <?php  echo $row['phone'] ?></td>
-                                            <td> <?php  echo $row['ownername'] ?></td>
+                                            <td> <?php  echo $row['phone']; ?></td>
+                                            <td> <?php  echo $row['ownername']; ?></td>
                                             <td>
-                                          <a href="hotelaccept.php?id=<?php echo $row['hotel_id']; ?>"> <button type="button" class="btn btn-success">Accept</button> </a>
-                                          <a href="hotelreject.php?id=<?php echo $row['hotel_id']; ?>">  <button type="button" class="btn btn-danger">Reject</button>  </a>
+                                          <a href="hotelaccept.php?id=<?php echo $row['hotel_id']; ?>&email=<?php echo $row['email'];  ?>&hname=<?php echo $row['hotelname']; ?>"> <button type="button" class="btn btn-success">Accept</button> </a>
+                                          <a href="hotelreject.php?id=<?php echo $row['hotel_id']; ?>&email=<?php echo $row['email']; ?>&hname=<?php  echo $row['hotelname']; ?>">  <button type="button" class="btn btn-danger">Reject</button>  </a>
 
                                              </td>
                           

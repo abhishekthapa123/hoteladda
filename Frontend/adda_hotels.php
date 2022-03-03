@@ -1,7 +1,7 @@
 <?php
 
 
-include('adminsidebar.php');
+include('adda_adminsidebar.php');
 
 ?>
 <!-- ============================================================== -->
@@ -14,6 +14,7 @@ include('adminsidebar.php');
     <div class="container-fluid">
         <div class="row bg-title">
             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title" style="color:tomato;"> होटल अडृा Admin</h4>
             </div>
             <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 
@@ -24,75 +25,66 @@ include('adminsidebar.php');
         <div class="row">
             <div class="col-sm-12">
                 <div class="white-box">
-                    <h3 class="box-title"> Update Rooms Details</h3>
+                    <h3 class="box-title"> Hotels Request</h3>
 
                     <?php
-                          
-                    if (isset($_SESSION['roomupdate_msg'])) 
-                    
-                    { ?>  <script>
-                        swal({
-                            title: "<?php   echo $_SESSION['roomupdate_msg'];  ?>"
-                            ,
-                            icon: "success",
-                            button: "OK",
-                        });
-                    </script>
-                    
-                        <?php  unset($_SESSION['roomupdate_msg']);} ?>
- 
 
-                  
+                    if (isset($_SESSION['addadelete_hotels'])) {
+
+                    ?>
+
+                        <script>
+                            swal({
+                                title: "<?php  echo $_SESSION['addadelete_hotels'];?>",
+                                
+                                icon: "success",
+                            });
+                        </script>
+
+
+                    <?php
+                     unset($_SESSION['addadelete_hotels']);
+                     }
+                    ?>
 
 
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
-
-
-
                                 <tr>
 
                                     <th>Hotel Name</th>
                                     <th>Location</th>
-                                    <th> Action</th>
+                                    <th>Image</th>
+                                    <th>Contact</th>
+                                    <th>Owner Name</th>
+                                    <th>Action</th>
 
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-
                                 include('connect.php');
-                                $admin_email = $_SESSION['adminemail'];
-                                $sql = "SELECT * FROM hotel h INNER JOIN 
-                                          admin a on h.admin_id = a.id
-                                      
-                                          where a.email='$admin_email'and flag='1'";
+                                $sql = "SELECT * FROM hotel where flag='1'";
                                 $result = mysqli_query($conn, $sql);
-
 
                                 while ($row = mysqli_fetch_assoc($result)) {
 
-
-
-
                                 ?>
                                     <tr>
-
-                                        <td><?php echo $row['hotelname']; ?></td>
-
-                                        <td><?php echo $row['location']; ?></td>
-
+                                        <td> <?php echo $row['hotelname'] ?></td>
+                                        <td> <?php echo $row['location'] ?></td>
+                                        <td><img src=<?php echo $row['image'];  ?> height="200px"></td>
+                                        <td> <?php echo $row['phone'] ?></td>
+                                        <td> <?php echo $row['ownername'] ?></td>
                                         <td>
-                                            <a href="editRoom.php?hid=<?php echo $row['hotel_id']; ?>&hname=<?php echo $row['hotelname']; ?>">
-                                                <i class="fa tm-fa-40x fa-edit tm-color-primary tm-margin-b-40"></i>
 
-                                            </a>
+                                            <a href="hotelremove.php?id=<?php echo $row['hotel_id']; ?>"> <button type="button" class="btn btn-danger">Remove</button> </a>
+
                                         </td>
 
                                     </tr>
                                 <?php } ?>
-
                             </tbody>
                         </table>
                     </div>

@@ -17,7 +17,7 @@ body {
   gap: 150px;
 }
 .container {
-  height: 1000px;
+  height: 2000px;
   width: 200px;
   background-color: #ffffff;
   box-shadow: 0 0 25px rgba(17, 1, 68, 0.08);
@@ -62,7 +62,7 @@ input[type="radio"]:checked:after {
     gap: 10px;
   }
   .container {
-    height: 300px;
+    height: 900px;
     width: 300px;
   }
   input[type="radio"]:after {

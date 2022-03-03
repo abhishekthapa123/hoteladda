@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="white-box">
-              
+                            <h2 style="color:seagreen; font-weight: bold;"> ADD HOTEL</h2>
                             <form method="POST" action="addhotel.php" enctype="multipart/form-data">
   <div class="form-group">
     <label for="exampleInputEmail1">Hotelname</label>

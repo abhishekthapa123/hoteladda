@@ -69,9 +69,11 @@ include('adminsidebar.php');
                                         <td><?php echo $row['check_in']; ?></td>
                                         <td> 
                                         <a href="checkout_room.php?bid=<?php echo $row['bid'];?>&hid=<?php echo $row['hid'];?>&rid=<?php echo $row['rid'];?>&total_number=<?php echo $row['total_number']; ?>&total_amount=<?php echo $row['total_amount'] ?>&hname=<?php echo  $_GET['hname'];  ?>">
-                                       
+                                      
                                         <i class="fa fa-sign-out" aria-hidden="true"></i><span>CHECKOUT</span>
                                         </a>
+                                        &nbsp;
+                                       <a href="cancelBookedRooms.php?id=<?php echo $row['bid'];  ?>"><button class="btn btn-danger">CANCEL</button></a> 
                                          </td>
 
                                         </tr>

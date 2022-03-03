@@ -1,6 +1,21 @@
 <?php
 session_start();
 include('connect.php');
+$hotelid = $_GET['hotelid'];
+$sql10 = "SELECT *FROM hotel h  INNER JOIN admin a on a.id = h.admin_id where h.hotel_id= $hotelid";
+$result10 = mysqli_query($conn, $sql10);
+
+if (mysqli_num_rows($result10) > 0) {
+  // output data of each row
+  while($row = mysqli_fetch_assoc($result10)) {
+   $gmail = $row['email'];
+   $hotelnames = $row['hotelname'];
+ 
+  }
+} 
+
+
+
 $room_id = $_GET['room'];//room id
 $rid1 = explode(',', $room_id);
 $rid = $rid1[1];
@@ -59,7 +74,23 @@ if (mysqli_query($conn, $sql3)) {
 
   if ($conn->query($sql5) === TRUE) {
    
-    header('Location: http://localhost/hoteladda/Frontend/');
+
+    $to_email = $gmail;
+    $subject = "BOOKED NOTIFICATION";
+    $body = "IN"." ".$hotelnames."YOU GOT ROOM REQUEST ";
+    $headers = "From: kingothapa123@gmail.com";
+    
+    if (mail($to_email, $subject, $body, $headers)) {
+      $_SESSION['bookedroom'] = "Your Room is Successfully Booked!!";
+      header('Location: http://localhost/hoteladda/Frontend/');
+    } else {
+        echo "Email sending failed...";
+    }
+
+
+
+
+
   }
 
 
@@ -73,8 +104,3 @@ if (mysqli_query($conn, $sql3)) {
   else {
   echo "Error: " . $sql1 . "<br>" . mysqli_error($conn);
 }
-
-
-
-
-?>

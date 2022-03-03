@@ -9,6 +9,20 @@
 
                 include('navbar.php')
             ?>
+                      <?php
+                          
+                          if (isset($_SESSION['bookedroom'])) 
+                          
+                          { ?>  <script>
+                              swal({
+                                  title: "<?php   echo $_SESSION['bookedroom'];  ?>"
+                                  ,
+                                  icon: "success",
+                                  button: "OK",
+                              });
+                          </script>
+                          
+                              <?php  unset($_SESSION['bookedroom']);} ?>
             <div class="tm-section tm-bg-img" id="tm-section-1">
                 <div class="tm-bg-white ie-container-width-fix-2">
                     <div class="container ie-h-align-center-fix">
@@ -111,7 +125,7 @@
 
                            
                                   
-                                    $sql = "SELECT *FROM hotel  where flag='1' ORDER BY rating1 DESC LIMIT 4 ";
+                                    $sql = "SELECT *FROM hotel  where flag='1' AND  rating1 >0 ORDER BY rating1 DESC LIMIT 4 ";
                                      $result = mysqli_query($conn, $sql);
                                   
                                        // output data of each row

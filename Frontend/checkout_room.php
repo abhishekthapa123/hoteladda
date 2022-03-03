@@ -28,7 +28,7 @@ function update_roomCheckout($hid,$rid,$total_room,$bid,$conn,$total_amount,$hna
         update_hotelCheckout($hid,$total_room,$bid,$conn);
         income($hid,$conn,$total_amount);
         barGraph($hid,$conn,$total_room,$rid);
-        header("Location: ");
+        header("Location: http://localhost/hoteladda/Frontend/roomRequest.php");
      } else {
    echo "Error updating record: " . mysqli_error($conn);
      }

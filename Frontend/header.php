@@ -38,6 +38,7 @@ http://www.tooplate.com/view/2095-level
           <script>
         
     </script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
 </head>
